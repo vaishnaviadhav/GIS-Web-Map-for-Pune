@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title> Pune City Webmap </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <style>
+            #header{
+                height: 75px;
+                background-color: orange;
+                color: black;
+            }
+            #side-panel{
+                height: 850px;
+                background-color: pink;
+            }
+            #mapdiv{
+                height: 850px;   
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="header" class="col-md-12">
+            <h1 class="text-center">PUNE CITY WEBMAP</h1>
+        </div>
+        <div id="side-panel" class="col-md-3">
+            <p>
+                Pune is the second largest city in the Indian State of Maharashtra, after Mumbai, and the eighth most populous city in India, with an estimated population of 7.4 million as of 2020. It has been ranked as "the most livable city in India" several times. Pune is widely regarded as the second major "IT hub of India" and the top "automobile and manufacturing hub of India". It is known as the "Oxford of the East" with the presence of a wide range of educational institutions. India's first indigenously-run girls' school was started in Pune by Savitribai Phule along with her associate Fatima Sheikh. The city has emerged as a major educational hub in recent decades, with nearly half of the total international students in the country studying in Pune. Research institutes of information technology, education, management and training attract students and professionals from India and overseas.
+            </p>
+            <button id="zoom-center" onclick="alert('Pune City Webmap')" class="form-control btn-danger">Pune City</button>
+        </div>
+        <div id="mapdiv" class="col-md-9"></div>
+        <script>
+            var map=L.map('mapdiv')
+            map.setView([18.5204,73.8567],12);
+            var webmap=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+            map.addLayer(webmap)
+            $("#zoom-center").click(function(){
+                map.setView([18.5204,73.8567],12);
+            });
+            var Pune=L.marker([18.5204,73.8567])
+            .bindPopup("<h3 class='text-center'>Pune City, Lat:18.5204° N, Long:73.8567° E</h3>").addTo(map);
+			map.on("click",function(a){
+ L.marker([a.latlng.lat,a.latlng.lng]).addTo(map).bindPopup('latitude:'+a.latlng.lat.toFixed(2)+' , '+'longitude:'+a.latlng.lng.toFixed(2))
+	;})
+	
+	var Taljai=L.marker([18.4780,73.8404])
+            .bindPopup("<h3 class='text-center'>Taljai Forest, Lat:18.4780° N, Long:73.8404° E</h3>").addTo(map);
+			map.on("click",function(a){
+ L.marker([a.latlng.lat,a.latlng.lng]).addTo(map).bindPopup('latitude:'+a.latlng.lat.toFixed(2)+' , '+'longitude:'+a.latlng.lng.toFixed(2))
+	;})
+	
+	var Airport=L.marker([18.5793, 73.9089])
+            .bindPopup("<h3 class='text-center'>Pune Airport, Lat:18.5793° N, Long:73.9089° E</h3>").addTo(map);
+			map.on("click",function(a){
+ L.marker([a.latlng.lat,a.latlng.lng]).addTo(map).bindPopup('latitude:'+a.latlng.lat.toFixed(2)+' , '+'longitude:'+a.latlng.lng.toFixed(2))
+	;})
+	var Chaturshringi=L.marker([18.53666452, 73.823163374])
+            .bindPopup("<h3 class='text-center'>Chaturshringi Hill, Lat:18.53666452° N, Long:73.823163374° E</h3>").addTo(map);
+			map.on("click",function(a){
+ L.marker([a.latlng.lat,a.latlng.lng]).addTo(map).bindPopup('latitude:'+a.latlng.lat.toFixed(2)+' , '+'longitude:'+a.latlng.lng.toFixed(2))
+	;})
+	var Katraj=L.marker([18.4444, 73.8629])
+            .bindPopup("<h3 class='text-center'>Katraj Lake, Lat:18.4444° N, Long:73.8629° E</h3>").addTo(map);
+			map.on("click",function(a){
+ L.marker([a.latlng.lat,a.latlng.lng]).addTo(map).bindPopup('latitude:'+a.latlng.lat.toFixed(2)+' , '+'longitude:'+a.latlng.lng.toFixed(2))
+	;})
+	map.on('mousemove',function(e){
+                var str = "Latitude: "+e.latlng.lat.toFixed(5)+" Longitude:"+e.latlng.lng.toFixed(5)+" Zoom Level: "+map.getZoom();
+                $("#map_coords").html(str)
+               
+                });
+        </script>
+    </body>
+</html>
